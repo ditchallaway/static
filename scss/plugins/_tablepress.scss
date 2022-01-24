@@ -1,0 +1,45 @@
+@use 'appkit/colors';
+
+table caption {
+
+display: none;
+
+}
+
+thead {
+
+    display: none;
+}
+tbody {
+margin:auto;
+}
+tr {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr; 
+    border-width: 0px 0px 2px 0px;
+    border-color: $colorHighlightDark;
+    margin: 10px 0px 0px 0px;
+    padding: 0px auto;
+    width: 100%;
+    align-self:center;
+}
+
+.column-1 {
+    font-size: 2em;
+    padding-left:15px;
+}
+
+.column-2 {
+    color: $colorHighlightDark;
+    font-size: 1em;
+    margin-left:5px;
+    font-weight:500;
+}
+
+.column-3 {
+
+    font-size: 2em;
+    text-align: right;
+    padding-right: 15px;
+
+}

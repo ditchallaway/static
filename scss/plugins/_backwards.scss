@@ -1,0 +1,168 @@
+@use 'appkit/colors';
+
+
+
+.hero-card {
+    background-size: cover;
+    background-position: bottom;
+}
+.hero-card h1 {
+    font-size: 2rem;
+    margin-top: 10px;
+}
+.hero-card h1 small {
+    font-size: 1rem;
+}
+.hero-address {
+    font-size: .7rem;
+    line-height: 1rem;
+    font-weight: 400;
+    opacity: .9;
+    margin-bottom: 0;
+}
+#map-pin>i {
+    color: red;
+}
+
+.title-title {
+    font-size: 2em;
+    font-weight: 500;
+    margin-bottom: 0;
+    margin-left: 1em;
+}
+
+.sub-title {
+    font-size: 1em;
+    margin-left: 2em;
+}
+
+.tag-cloud {
+    margin-bottom: 1rem;
+    line-height: 1rem;
+    font-size: .5rem;
+}
+
+.dual-cta-row {
+    font-size: 5px;
+}
+.footer-bar-6 .circle-nav img {
+    max-width: 50px;
+    transform: translateY(-35px) translateX(0);
+    color: #fff !important;
+    opacity: 1 !important;
+    position: relative;
+    z-index: 2;
+}
+
+/*! Grid Lines*/
+:focus {
+    outline: 0;
+}
+::selection {
+    background: $colorHighlightLight;
+    color: #fff;
+}
+::-moz-selection {
+    background: $colorHighlightLight;
+    color: #fff;
+}
+//nunununununununununununununununu PRICE nunununununununununununununununu// 
+.price-list {
+    padding: 1.5em;
+    padding-bottom: 0px;
+}
+.price-list-row {
+    padding: 0, 2em, 0, 2em;
+    margin: 0, 2em, 0, 2em;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+.price {
+    font-size: 1.5em;
+    margin-right: 1em;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+.item {
+    font-size: 1.2em;
+    margin-left: 1em;
+    margin-bottom: 0;
+    font-weight: 600;
+}
+.price-badge {
+    font-size: 1.5rem;
+}
+.price-badge {
+    font-size: 1.2em;
+    margin-right: 3vw;
+}
+.price-badge-facial {
+    font-size: 18px;
+}
+.facial-p {
+    line-height: 1.5em;
+}
+//nunununununununununununununununu PRICE nunununununununununununununununu// 
+
+//nunununununununununununununununu KERRIE nunununununununununununununununu// 
+.nice-socks {
+    background: linear-gradient(-135deg, #ffffff 8%, transparent 8% 92%, #ffffff 92%) 0 6px, linear-gradient(135deg, #ffffff 8%, transparent 8% 92%, #ffffff 92%) 0 6px, linear-gradient(-135deg, #000000 25%, transparent 25% 75%, #000000 75%), linear-gradient(135deg, #000000 25%, transparent 25% 75%, #000000 75%);
+    background-size: 26px 26px;
+    background-color: $colorHighlightDark;
+}
+.skin-script {
+    max-width: calc(100% - 3rem);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.bg-34 {
+    background-image: url(../images/pictures/34.png);
+}
+.bg-35 {
+    background-image: url(../images/pictures/35.png);
+}
+.bg-36 {
+    background-image: url(../images/pictures/36.png);
+}
+.bg-37 {
+    background-image: url(../images/pictures/37.png);
+}
+.bg-39 {
+    background-image: url(../images/pictures/01.webp);
+    background-position: inherit;
+}
+.bg-40 {
+    background-image: url(../images/pictures/01a.webp);
+}
+
+@media only screen and (min-width: 620px) {
+    .skin-script {
+        max-width: calc(100% - 6rem);
+    }
+
+}
+//nunununununununununununununununu KERRIE nunununununununununununununununu// 
+
+//nunununununununununununununununu HOURS nunununununununununununununununu// 
+.hours-item {
+    font-size: 1em;
+    margin-left: 0;
+    margin-bottom: 0;
+    font-weight: 600;
+}
+.hours-list-row {
+    padding: 0, 4em, 0, 4em;
+    margin: 0, 2em, 0, 2em;
+    display: flex;
+
+}
+.divider-hours {
+    height: 2px;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.05);
+    margin-bottom: 0;
+    padding-right: 3em;
+    padding-left: 3em;
+}
+//nunununununununununununununununu HOURS nunununununununununununununununu//
