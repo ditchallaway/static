@@ -3,7 +3,10 @@ var CACHE_NAME = 'Appkit-Cache-V10';
 
 // Files required to make this app work offline
 var REQUIRED_FILES = [
-    'index.html'
+    'index.html',
+    'body-waxing/*',
+    'eye-enhancements/*',
+    'facials/*'
 ];
 
 self.addEventListener('install', function(event) {
