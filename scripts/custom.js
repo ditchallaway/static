@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Global Variables
     let isPWA = true;  // Enables or disables the service worker and PWA
-    let isAJAX = false; // AJAX transitions. Requires local server or server
-    var pwaName = "waxandskincare"; //Local Storage Names for PWA
+    let isAJAX = true; // AJAX transitions. Requires local server or server
+    var pwaName = "Wax"; //Local Storage Names for PWA
     var pwaRemind = 1; //Days to re-remind to add to home
     var pwaNoCache = false; //Requires server and HTTPS/SSL. Will clear cache with each visit
 
@@ -1028,19 +1028,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         //Sharing
-        function shareLinks(){
-            var shareCheck = document.querySelectorAll('.shareToFacebook, .shareToTwitter, .shareToLinkedIn');
-            if(shareCheck.length){
-                var share_link = window.location.href;
-                var share_title = document.title;
-                document.querySelectorAll('.shareToFacebook').forEach( x=> x.setAttribute("href", "https://www.facebook.com/sharer/sharer.php?u="+share_link));
-                document.querySelectorAll('.shareToTwitter').forEach( x=> x.setAttribute("href", "https://twitter.com/share?text="+share_link));
-                document.querySelectorAll('.shareToPinterest').forEach( x=> x.setAttribute("href", "https://pinterest.com/pin/create/button/?url=" + share_link));
-                document.querySelectorAll('.shareToWhatsApp').forEach( x=> x.setAttribute("href", "whatsapp://send?text=" + share_link));
-                document.querySelectorAll('.shareToMail').forEach( x=> x.setAttribute("href", "mailto:?body=" + share_link));
-                document.querySelectorAll('.shareToLinkedIn').forEach( x=> x.setAttribute("href", "https://www.linkedin.com/shareArticle?mini=true&url="+share_link+"&title="+share_title+"&summary=&source="));
-            }
-        }
+		function shareLinks(){
+			var shareTitle = document.title;
+			var shareText = document.title;
+			var shareLink = window.location.href + "vcard.vcf";
+			if(document.querySelectorAll('.shareToFacebook, .shareToTwitter, .shareToLinkedIn')[0]){
+				document.querySelectorAll('.shareToFacebook, .shareToTwitter, .shareToLinkedIn, .shareToWhatsApp, .shareToMail').forEach(x => {x.setAttribute('target','_blank');});
+				document.querySelectorAll('.shareToFacebook').forEach( x=> x.setAttribute("href", "https://www.facebook.com/sharer/sharer.php?u="+shareLink));
+				document.querySelectorAll('.shareToTwitter').forEach( x=> x.setAttribute("href", "http://twitter.com/share?text="+shareTitle+"%20"+shareLink));
+				document.querySelectorAll('.shareToPinterest').forEach( x=> x.setAttribute("href", "https://pinterest.com/pin/create/button/?url=" + shareLink));
+				document.querySelectorAll('.shareToWhatsApp').forEach( x=> x.setAttribute("href", "whatsapp://send?text=" + shareLink));
+				document.querySelectorAll('.shareToMail').forEach( x=> x.setAttribute("href", "mailto:?body=" + shareLink));
+				document.querySelectorAll('.shareToLinkedIn').forEach( x=> x.setAttribute("href", "https://www.linkedin.com/shareArticle?mini=true&url="+shareLink+"&title="+shareTitle+"&summary=&source="));
+			}
+			//Menu Share Web API
+			if (navigator.canShare){
+				const shareData = {title: shareTitle, text: shareText, url: shareLink}
+				var shareMenu = document.querySelectorAll('[data-menu="menu-share"], [data-show-share]');
+				if(shareMenu){shareMenu.forEach(el => {el.addEventListener('click', async () => {menu('menu-share', 'hide',0); try {await navigator.share(shareData)} catch(err){}});});}
+			}
+		}
 
         //Contact Form
         var contactForm = document.querySelectorAll('.contact-form');
