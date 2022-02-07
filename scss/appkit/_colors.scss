@@ -1,7 +1,7 @@
 /* Generating Color Pack*/
 
-$defaultGradient : linear-gradient(to bottom, rgba(27,85,191,1) 0%, rgba(23,64,191,1) 100%)!important;
-$colorHighlightLight: #5D9CEC;
+$defaultGradient : linear-gradient(to bottom, rgba(79,193,233,1) 0%, rgba(74, 137, 220,1) 100%)!important;
+$colorHighlightLight: #4fc1e9;
 $colorHighlightDark: #4A89DC;
 
 
@@ -21,7 +21,7 @@ $colorPack: (
     "magenta" #AC92EC #967ADC rgba(150, 122, 220, 0.3) rgba(150, 122, 220, 0.7), 
     "brown" #BAA286 #AA8E69 rgba(170, 142, 105, 0.3) rgba(170, 142, 105, 0.7),
     "gray" #e2e5ea #AAB2BD rgba(170, 178, 189, 0.3) rgba(170, 178, 189, 0.7),
-    "aqua" #4FC1E9 #3BAFDA rgba(67, 74, 84, 0.3) rgba(67, 74, 84, 0.7),
+    "aqua" #4fc1e9 #3BAFDA rgba(67, 74, 84, 0.3) rgba(67, 74, 84, 0.7),
     "night" #222529 #16181c rgba(67, 74, 84, 0.3) rgba(67, 74, 84, 0.7),
     "dark" #656D78 #434A54 rgba(67, 74, 84, 0.3) rgba(67, 74, 84, 0.7)
 );

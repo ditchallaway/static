@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //Global Variables
     let isPWA = true;  // Enables or disables the service worker and PWA
     let isAJAX = true; // AJAX transitions. Requires local server or server
-    var pwaName = "Wax"; //Local Storage Names for PWA
+    var pwaName = "Appkit"; //Local Storage Names for PWA
     var pwaRemind = 1; //Days to re-remind to add to home
     var pwaNoCache = false; //Requires server and HTTPS/SSL. Will clear cache with each visit
 
@@ -360,6 +360,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        //Check iOS Version and add min-ios15 class if higher or equal to iOS15
+        function iOSversion() {
+          let d, v;
+          if (/iP(hone|od|ad)/.test(navigator.platform)) {
+            v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+            d = {status: true, version: parseInt(v[1], 10), info: parseInt(v[1], 10)+'.'+parseInt(v[2], 10)+'.'+parseInt(v[3] || 0, 10)};
+          }else{d = {status:false, version: false, info:''}}
+          return d;
+        }
+        let iosVer = iOSversion();
+        if (iosVer.version > 14) {document.querySelectorAll('#page')[0].classList.add('min-ios15');}
+
         //Card Extender
         const cards = document.getElementsByClassName('card');
         function card_extender(){
@@ -374,11 +386,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(cards[i].getAttribute('data-card-height') === "cover"){
                     if (window.matchMedia('(display-mode: fullscreen)').matches) {var windowHeight = window.outerHeight;}
                     if (!window.matchMedia('(display-mode: fullscreen)').matches) {var windowHeight = window.innerHeight;}
-                    var coverHeight = windowHeight - headerHeight - footerHeight + 'px';
+                    //Fix for iOS 15 pages with data-height="cover"
+                    var coverHeight = windowHeight + 'px';
+                    // - Remove this for iOS 14 issues - var coverHeight = windowHeight - headerHeight - footerHeight + 'px';
+
                 }
                 if(cards[i].getAttribute('data-card-height') === "cover-card"){
                     var windowHeight = window.outerHeight;
-                    var coverHeight = windowHeight - 275 + 'px';
+                    var coverHeight = windowHeight - 300 + 'px';
                     cards[i].style.height =  coverHeight
                 }
                 if(cards[i].getAttribute('data-card-height') === "cover-full"){
@@ -1031,7 +1046,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		function shareLinks(){
 			var shareTitle = document.title;
 			var shareText = document.title;
-			var shareLink = window.location.href + "vcard.vcf";
+			var shareLink = window.location.href;
 			if(document.querySelectorAll('.shareToFacebook, .shareToTwitter, .shareToLinkedIn')[0]){
 				document.querySelectorAll('.shareToFacebook, .shareToTwitter, .shareToLinkedIn, .shareToWhatsApp, .shareToMail').forEach(x => {x.setAttribute('target','_blank');});
 				document.querySelectorAll('.shareToFacebook').forEach( x=> x.setAttribute("href", "https://www.facebook.com/sharer/sharer.php?u="+shareLink));
@@ -1272,11 +1287,12 @@ document.addEventListener('DOMContentLoaded', () => {
         //Online / Offline Settings
         //Activating and Deactivating Links Based on Online / Offline State
         function offlinePage(){
-            var anchorsDisabled = document.querySelectorAll('a');
-            anchorsDisabled.forEach(function(e){
-                var hrefs = e.getAttribute('href');
-                if(hrefs.match(/.html/)){e.classList.add('show-offline'); e.setAttribute('data-link',hrefs); e.setAttribute('href','#');}
-            });
+			//Enable the code below to disable offline mode.
+            //var anchorsDisabled = document.querySelectorAll('a');
+            //anchorsDisabled.forEach(function(e){
+            //    var hrefs = e.getAttribute('href');
+            //    if(hrefs.match(/.html/)){e.classList.add('show-offline'); e.setAttribute('data-link',hrefs); e.setAttribute('href','#');}
+            //});
             var showOffline = document.querySelectorAll('.show-offline');
             showOffline.forEach(el => el.addEventListener('click', event => {
                 document.getElementsByClassName('offline-message')[0].classList.add('offline-message-active');
@@ -1349,7 +1365,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if(!checkPWA.classList.contains('isPWA')){
                 if ('serviceWorker' in navigator) {
                   window.addEventListener('load', function() {
-                    navigator.serviceWorker.register(pwaLocation, {scope: pwaScope});
+                    navigator.serviceWorker.register(pwaLocation, {scope: pwaScope}).then(function(registration){registration.update();})
                   });
                 }
 

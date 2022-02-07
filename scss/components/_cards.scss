@@ -16,7 +16,7 @@ $card-under-bg-zindex:1;
 [data-card-height="cover"].card{margin-bottom:0px!important;}
 .card-style {
 	overflow: hidden;
-	margin: 0px 15px $globalMargin 15px;
+	margin: 0px $globalMargin $globalMargin $globalMargin;
 	border-radius: $rounded-card-style;
 	border: none;
 	box-shadow: $globalShadow;
