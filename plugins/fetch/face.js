@@ -18,12 +18,12 @@ fetch(
             <p class="description-left">
                 ${row.serviceD}
             </p>
-            <a data-bs-toggle="collapse" class="no-effect btn-sm bg-highlight" href="#express">
+            <a data-bs-toggle="collapse" class="no-effect btn-sm bg-highlight" href="#${row.serviceId}">
                 <span class="text-end">Details</span>
                 <i class="fa fa-angle-down"></i>
             </a>  
         </div>
-        <div id="express" class="bg-highlight pattern-horizontal-stripes-md pt-2 collapse">
+        <div id="${row.serviceId}" class="bg-highlight pattern-horizontal-stripes-md pt-2 collapse">
             <div class="card card-style pl-5 pt-3">
                 <ul class="">
                             <li><h5 class="mt-2"><i class="fa fa-check color-green-dark pr-2"></i> Double Cleanse.</h5></li>
@@ -32,9 +32,9 @@ fetch(
                             <li><h5 class="mt-2"><i class="fa fa-check color-green-dark pr-2"></i> Custom Enzyme/Acid Exfoliation Featuring the Skin Script Resurfacing Collection.</h5></li>
                             <li><h5 class="mt-2"><i class="fa fa-check color-green-dark pr-2"></i> Includes skin appropriate moisturizer and sunscreen from SkinScript Botanical/Phameceudical fusion line and Luminewal Hylauronic Acid serum.</h5></li>
                           </ul>
-                        <span class="badge price-badge-facial bg-highlight col-2 ms-3 font-22">${row.servicePrice}</span>
-                    <picture class="p-3">
-                    <source srcset="images/pictures/skin-script-skin-care-sm.png" media="(max-width: 700px)"> <img src="images/pictures/skin-script-skin-care.png" class="skin-script col-6 ms-3" alt="Skin Script's pareben free skin care products.">
+                          <span class="badge border border-highlight color-highlight font-18 col-3 ms-3">${row.servicePrice}</span>
+                      <picture class="m-3">
+                      <source srcset="images/pictures/skin-script-skin-care-sm.png" media="(max-width: 700px)"> <img src="../images/pictures/skin-script-skin-care.png" class="skin-script col-6 ms-3" alt="Skin Script's pareben free skin care products." />
             </picture>
             <div class="card-bottom text-end">
                 <a href="https://square.site/book/B7XJ5944N8D2T/wax-and-skin-care-sandpoint-id"><div class="mb-3 me-3 bg-highlight btn">
