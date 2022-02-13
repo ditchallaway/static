@@ -21,7 +21,7 @@ fetch(
 
         document.getElementById('wax').innerHTML = output;
  
-  
+  professional facials for healthy, youthful glow.
 });
 
 fetch(
