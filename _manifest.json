@@ -60,7 +60,9 @@
 	{
 		"src": "/maskable_icon.png",
 		"sizes": "682x682",
-		"type": "image/png"
+		"type": "image/png",
+      "purpose": "maskable"
+
 	}
   ],
     "screenshots": [
