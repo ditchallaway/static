@@ -1,8 +1,5 @@
 {
 "version": "2.0",
-"comment": "---Above version must be the same as data-pwa-version",
-"comment": "---data-pwa-version can be found in / in the manifest tag",
-"comment": "---if versions are not the same it will cause an update loop",
 "lang" : "en",
 "name" : "Wax and Skin Care",
 "scope" : "/",
@@ -11,8 +8,8 @@
 "short_name" : "Wax & Skin",
 "description" : "Book a service at Wax and Skin Care",
 "orientation" : "portrait",
-"background_color": "#c8d1de",
-"theme_color": "#fcad03",
+  "background_color": "#fffae0",
+  "theme_color": "#a5fde0",
 "generated" : "true",
   "icons": [
 	{
