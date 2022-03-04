@@ -1,0 +1,42 @@
+;;
+;; Domain:     jonnybot.com.
+;; Exported:   2022-02-19 06:12:18
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+jonnybot.com	3600	IN	SOA	jonnybot.com root.jonnybot.com 2039691773 7200 3600 86400 3600
+
+;; A Records
+jonnybot.com.	1	IN	A	45.33.49.213
+my.jonnybot.com.	120	IN	A	45.79.79.39
+
+;; CNAME Records
+www.jonnybot.com.	1	IN	CNAME	jonnybot.com.
+
+;; MX Records
+jonnybot.com.	1	IN	MX	3 amir.mx.cloudflare.net.
+jonnybot.com.	1	IN	MX	32 linda.mx.cloudflare.net.
+jonnybot.com.	1	IN	MX	97 isaac.mx.cloudflare.net.
+
+;; TXT Records
+default._domainkey.jonnybot.com.	1	IN	TXT	"v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArP9tBNhg0nBVASvczbkv+XKCEH65+7c3ygfYEEyFS27OsY3aZ5NQgqrKo+NI3G4jUFI3gTWf/2KcUwDn3cZTIWfW/dERSfRxoBKZ38XLXVrRYYqAkWofeUVI0eEMG/UoZO5nKFeLpkCraENl+LIyVq0rcCcLzfn0wwqqWi41ddIwiBV9ZL1Aehscp57Rv3g+BkAfG+wdSJT3mQDwGxZII7PGjwefNV6oZYjGUq69bS2qYIkweAPpPApwk/AK7pcQq58yBSyjPEQeQq6QChWjkpTkJ1OTIXpLPIrAW96QuXe4D4bz12DUrjFt6NpmtOqlbbTcLUXnnjye5ddNmjG4awIDAQAB;"
