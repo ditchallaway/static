@@ -124,86 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-        //Image Sliders
-        var splide = document.getElementsByClassName('splide');
-        if(splide.length){
-            var singleSlider = document.querySelectorAll('.single-slider');
-            if(singleSlider.length){
-                singleSlider.forEach(function(e){
-                    var single = new Splide( '#'+e.id, {
-                        type:'loop',
-                        autoplay:true,
-                        interval:4000,
-                        perPage: 1,
-                    }).mount();
-                    var sliderNext = document.querySelectorAll('.slider-next');
-                    var sliderPrev = document.querySelectorAll('.slider-prev');
-                    sliderNext.forEach(el => el.addEventListener('click', el => {single.go('>');}));
-                    sliderPrev.forEach(el => el.addEventListener('click', el => {single.go('<');}));
-                });
-            }
-
-            var doubleSlider = document.querySelectorAll('.double-slider');
-            if(doubleSlider.length){
-                doubleSlider.forEach(function(e){
-                     var double = new Splide( '#'+e.id, {
-                        type:'loop',
-                        autoplay:true,
-                        interval:4000,
-                        arrows:false,
-                        perPage: 2,
-                    }).mount();
-                });
-            }
-
-            var trippleSlider = document.querySelectorAll('.tripple-slider');
-            if(trippleSlider.length){
-                trippleSlider.forEach(function(e){
-                     var tripple = new Splide( '#'+e.id, {
-                        type:'loop',
-                        autoplay:true,
-                        padding: {
-                            left   :'0px',
-                            right: '80px',
-                        },
-                        interval:4000,
-                        arrows:false,
-                        perPage: 2,
-                        perMove: 1,
-                    }).mount();
-                });
-            }
-        }
-
-        var topicSlider = document.querySelectorAll('.topic-slider');
-        if(topicSlider.length){
-             var topic = new Splide( '.topic-slider', {
-                type:'loop',
-                autoplay:false,
-                padding: {
-                    left   :'15px',
-                    right: '40px',
-                },
-                arrows:false,
-                perPage: 3,
-                perMove: 1,
-            }).mount();
-        }
-        var storySlider = document.querySelectorAll('.story-slider');
-        if(storySlider.length){
-             var topic = new Splide( '.story-slider', {
-                type:'loop',
-                autoplay:false,
-                padding: {
-                    left   :'0px',
-                    right: '40px',
-                },
-                arrows:false,
-                perPage: 4,
-                perMove: 1,
-            }).mount();
-        }
-
 
         //Don't jump on Empty Links
         const emptyHref = document.querySelectorAll('a[href="#"]')
@@ -689,43 +609,6 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         }
 
-        //Scroll Ads
-        var scrollItems = document.querySelectorAll('.scroll-ad, .header-auto-show')
-        if(scrollItems.length){
-            var scrollAd = document.querySelectorAll('.scroll-ad');
-            var scrollHeader = document.querySelectorAll('.header-auto-show');
-            var pageTitle = document.querySelectorAll('.page-title');
-            window.addEventListener('scroll', function() {
-                if (document.querySelectorAll('.scroll-ad, .header-auto-show').length) {
-                    function showScrollAd(){scrollAd[0].classList.add('scroll-ad-visible');}
-                    function hideScrollAd(){scrollAd[0].classList.remove('scroll-ad-visible');}
-                    function showHeader(){scrollHeader[0].classList.add('header-active');}
-                    function hideHeader(){scrollHeader[0].classList.remove('header-active');}
-                    function hideTitle(){pageTitle[0].style.opacity ="0"}
-                    function showTitle(){pageTitle[0].style.opacity ="1"}
-                    var window_height = window.outerWidth;
-                    var total_scroll_height = document.documentElement.scrollTop
-                    let inside_header = total_scroll_height <= 80;
-                    var passed_header = total_scroll_height >= 80;
-                    let inside_title = total_scroll_height <= 40;
-                    var passed_title = total_scroll_height >= 40;
-                    let inside_footer = (window_height - total_scroll_height + 1000) <= 150
-                    if(scrollAd.length){
-                        inside_header ? hideScrollAd() : null
-                        passed_header ? showScrollAd() : null
-                        inside_footer ? hideScrollAd() : null
-                    }
-                    if(scrollHeader.length){
-                        inside_header ? hideHeader() : null
-                        passed_header ? showHeader() : null
-                    }
-                    if(pageTitle.length){
-                        inside_title ? showTitle() : null
-                        passed_title ? hideTitle() : null
-                    }
-                }
-            });
-        }
 
         //Stepper
         var stepperAdd = document.querySelectorAll('.stepper-add');
@@ -794,51 +677,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        var workingHours = document.querySelectorAll('.show-business-opened, .show-business-closed, .working-hours');
-        if(workingHours.length){
-            //Working Hours
-            var d = new Date();
-            var n = d.getDay();
-            var now = d.getHours() + "." + d.getMinutes();
-            var weekdays = [
-                ["Sunday"],
-                ["Monday", 9.00, 17.00],
-                ["Tuesday", 9.00, 17.00],
-                ["Wednesday", 9.00, 17.00],
-                ["Thursday", 9.00, 17.00],
-                ["Friday", 9.00, 17.00],
-                ["Saturday", 9.00, 13.00] // we are closed, sorry!
-            ];
-            var day = weekdays[n];
-            var openClass = document.querySelectorAll('.show-business-opened');
-            var closeClass = document.querySelectorAll('.show-business-closed');
-
-            if (now > day[1] && now < day[2] || now > day[3] && now < day[4]) {
-                openClass.forEach(function(e){e.classList.remove('disabled');})
-                closeClass.forEach(function(e){e.classList.add('disabled');})
-            }
-             else {
-                openClass.forEach(function(e){e.classList.add('disabled');})
-                closeClass.forEach(function(e){e.classList.remove('disabled');})
-            }
-
-            var workingHours = document.querySelectorAll('.working-hours[data-day]');
-            workingHours.forEach(function(entry) {
-                var matchDay = entry.getAttribute('data-day');
-                if (matchDay === day[0]){
-                    var matchData = '[data-day="'+day[0]+'"]'
-                    if (now > day[1] && now < day[2] || now > day[3] && now < day[4]) {
-                        document.querySelectorAll(matchData)[0].classList.add('bg-green-dark');
-                        document.querySelectorAll(matchData +' p').forEach(function(whiteText){whiteText.classList.add('color-white')});
-                    }
-                     else {
-                        document.querySelectorAll(matchData)[0].classList.add('bg-red-dark');
-                        document.querySelectorAll(matchData +' p').forEach(function(whiteText){whiteText.classList.add('color-white')});
-                    }
-                }
-            });
-        }
-
 
 
         //Vibrate API
@@ -858,52 +696,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 var vibrateTime = el.getAttribute('data-vibrate');
                 window.navigator.vibrate(vibrateTime);
             }));
-        }
-
-        //Time Ads
-        var timedAd = document.querySelectorAll('[data-timed-ad]');
-        if(timedAd.length){
-            timedAd.forEach(el => el.addEventListener('click',e =>{
-                var timedAdTime = el.getAttribute('data-timed-ad');
-                var timedAdData = el.getAttribute('data-menu');
-                var timedAdTimer = timedAdTime;
-                var timerAdFunction = setInterval(function(){
-                  if(timedAdTimer <= 1){
-                        clearInterval(timerAdFunction);
-                        document.getElementById(timedAdData).querySelectorAll('.fa-times')[0].classList.remove('disabled');
-                        document.getElementById(timedAdData).querySelectorAll('.close-menu')[0].classList.remove('no-click');
-                        document.getElementById(timedAdData).querySelectorAll('span')[0].style.display ="none";
-                  } else {
-                      //console.log(timedAdTimer);
-                  }
-                  document.getElementById(timedAdData).querySelectorAll('span')[0].innerHTML = timedAdTimer -= 1;
-                }, 1000);
-            }));
-        }
-
-        //Auto Show Ads
-        var autoAd = document.querySelectorAll('[data-auto-show-ad]');
-        if(autoAd.length){
-            var autoAdTime = autoAd[0].getAttribute('data-auto-show-ad');
-            var timerAdFunction = setInterval(function(){
-                if(autoAdTime <= 1)
-                {
-                    clearInterval(timerAdFunction);
-                    var autoAdId = autoAd[0].getAttribute('data-menu');
-                    document.getElementById(autoAdId).classList.add('menu-active');
-                    var autoAdCloseTime = autoAd[0].getAttribute('data-timed-ad');
-                    var downloadTimer = setInterval(function () {
-                        if (autoAdCloseTime <= 0) {
-                            clearInterval(downloadTimer);
-                            document.getElementById(autoAdId).querySelectorAll('.fa-times')[0].classList.remove('disabled');
-                            document.getElementById(autoAdId).querySelectorAll('.close-menu')[0].classList.remove('no-click');
-                            document.getElementById(autoAdId).querySelectorAll('span')[0].style.display ="none";
-                        }
-                        document.getElementById(autoAdId).querySelectorAll('span')[0].innerHTML = autoAdCloseTime -= 1;
-                    }, 1000);
-                }
-                autoAdTime -= 1;
-            }, 1000);
         }
 
         //Visit Detection
@@ -965,81 +757,13 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         }
 
-        //QR Generator
-        var qr_image = document.querySelectorAll('.qr-image');
-        if(qr_image.length){
-            var qr_this = window.location.href;
-            var qr_auto = document.getElementsByClassName('generate-qr-auto')[0];
-            var qr_api_address = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=';
-            if(qr_auto){qr_auto.setAttribute('src', qr_api_address+qr_this)        }
-            var qr_btn = document.getElementsByClassName('generate-qr-button')[0];
-            if(qr_btn){
-                qr_btn.addEventListener('click',function(){
-                    var get_qr_url = document.getElementsByClassName('qr-url')[0].value;
-                    var qr_api_address = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=';
-                    var qr_img = '<img class="mx-auto polaroid-effect shadow-l mt-4 delete-qr" width="200" src="'+qr_api_address+get_qr_url+'" alt="img"><p class="font-11 text-center mb-0">'+get_qr_url+'</p>'
-                    document.getElementsByClassName('generate-qr-result')[0].innerHTML = qr_img
-                    qr_btn.innerHTML = "Generate New Button"
-                })
-            }
-        }
+
 
         if (window.location.protocol === "file:"){
             var linksLocal = document.querySelectorAll('a');
             linksLocal.forEach(el => el.addEventListener('mouseover', event => {
                // console.log("You are seeing these errors because your file is on your local computer. For real life simulations please use a Live Server or a Local Server such as AMPPS or WAMPP or simulate a  Live Preview using a Code Editor like http://brackets.io (it's 100% free) - PWA functions and AJAX Page Transitions will only work in these scenarios.");
             }));
-        }
-
-        //Search Page
-        var searchField = document.querySelectorAll('[data-search]');
-        if(searchField.length){
-            var searchResults = document.querySelectorAll('.search-results')
-            var searchNoResults = document.querySelectorAll('.search-no-results');
-            var searchTotal = document.querySelectorAll(".search-results div")[0].childElementCount;
-            var searchTrending = document.querySelectorAll('.search-trending');
-            function searchFunction(){
-                var searchStr = searchField[0].value;
-                var searchVal = searchStr.toLowerCase();
-                if (searchVal != '') {
-                    searchResults[0].classList.remove('disabled-search-list');
-                    var searchFilterItem = document.querySelectorAll('[data-filter-item]');
-                    for (let i = 0; i < searchFilterItem.length; i++) {
-                        var searchData = searchFilterItem[i].getAttribute('data-filter-name');
-                        if(searchData.includes(searchVal)){
-                            searchFilterItem[i].classList.remove('disabled');
-                            if(searchTrending.length){searchTrending[0].classList.add('disabled');}
-                        } else {
-                            searchFilterItem[i].classList.add('disabled');
-                            if(searchTrending.length){searchTrending[0].classList.remove('disabled');}
-                        }
-                        var disabledResults = document.querySelectorAll(".search-results div")[0].getElementsByClassName("disabled").length;
-                        if(disabledResults === searchTotal){
-                            searchNoResults[0].classList.remove('disabled');
-                            if(searchTrending.length){searchTrending[0].classList.add('disabled');}
-                        } else {
-                            searchNoResults[0].classList.add('disabled');
-                            if(searchTrending.length){searchTrending[0].classList.add('disabled');}
-                        }
-                    }
-                }
-                if (searchVal === '') {
-                    searchResults[0].classList.add('disabled-search-list');
-                    searchNoResults[0].classList.add('disabled');
-                    if(searchTrending.length){searchTrending[0].classList.remove('disabled');}
-                }
-            };
-
-            searchField[0].addEventListener('keyup', function() {searchFunction();})
-            searchField[0].addEventListener('click', function() {searchFunction();})
-
-            var searchClick = document.querySelectorAll('.search-trending a');
-            searchClick.forEach(el => el.addEventListener('click', event => {
-                var trendingResult = el.querySelectorAll('span')[0].textContent.toLowerCase();
-                searchField[0].value  = trendingResult;
-                searchField[0].click();
-            }));
-
         }
 
         //Sharing
@@ -1063,78 +787,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				if(shareMenu){shareMenu.forEach(el => {el.addEventListener('click', async () => {menu('menu-share', 'hide',0); try {await navigator.share(shareData)} catch(err){}});});}
 			}
 		}
-
-        //Contact Form
-        var contactForm = document.querySelectorAll('.contact-form');
-        if(contactForm.length){
-            var form = document.getElementById('contactForm');
-            form.onsubmit = function (e) {
-                // Stop the regular form submission
-                e.preventDefault();
-
-                //Validate Fields
-                var nameField = document.getElementById('contactNameField');
-                var mailField = document.getElementById('contactEmailField');
-                var textField = document.getElementById('contactMessageTextarea');
-                var validateMail = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-                if(nameField.value === ''){
-                    form.setAttribute('data-form','invalid');
-                    nameField.classList.add('border-red-dark');
-                    document.getElementById('validator-name').classList.remove('disabled');
-                } else {
-                    form.setAttribute('data-form','valid');
-                    document.getElementById('validator-name').classList.add('disabled');
-                    nameField.classList.remove('border-red-dark');
-                }
-                if(mailField.value === ''){
-                    form.setAttribute('data-form','invalid');
-                    mailField.classList.add('border-red-dark');
-                    document.getElementById('validator-mail1').classList.remove('disabled');
-                } else {
-                    document.getElementById('validator-mail1').classList.add('disabled');
-                    if(!validateMail.test(mailField.value)){
-                        form.setAttribute('data-form','invalid');
-                        mailField.classList.add('border-red-dark');
-                        document.getElementById('validator-mail2').classList.remove('disabled');
-                    } else{
-                        form.setAttribute('data-form','valid');
-                        document.getElementById('validator-mail2').classList.add('disabled');
-                        mailField.classList.remove('border-red-dark');
-                    }
-                }
-                if(textField.value === ''){
-                    form.setAttribute('data-form','invalid');
-                    textField.classList.add('border-red-dark');
-                    document.getElementById('validator-text').classList.remove('disabled');
-                } else{
-                    form.setAttribute('data-form','valid');
-                    document.getElementById('validator-text').classList.add('disabled');
-                    textField.classList.remove('border-red-dark')
-                }
-
-                if(form.getAttribute('data-form') === 'valid'){
-                    document.querySelectorAll('.form-sent')[0].classList.remove('disabled');
-                    document.querySelectorAll('.contact-form')[0].classList.add('disabled');
-                    // Collect the form data while iterating over the inputs
-                    var data = {};
-                    for (let i = 0, ii = form.length; i < ii; ++i) {
-                        let input = form[i];
-                        if (input.name) {
-                            data[input.name] = input.value;
-                        }
-                    }
-                    // Construct an HTTP request
-                    var xhr = new XMLHttpRequest();
-                    xhr.open(form.method, form.action, true);
-                    xhr.setRequestHeader('Accept', 'application/json; charset=utf-8');
-                    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-                    // Send the collected data as JSON
-                    xhr.send(JSON.stringify(data));
-                    // Callback function
-                    xhr.onloadend = function (response) {if (response.target.status === 200) {console.log('Form Submitted')}};
-                }
-            };
-        }
 
         //Collapse Flip Icon
         var collapseBtn = document.querySelectorAll('[data-bs-toggle="collapse"]:not(.no-effect)');
@@ -1200,39 +852,6 @@ document.addEventListener('DOMContentLoaded', () => {
             copyrightYear.textContent = intYear;
         }
 
-        //Check Age
-        var checkAge = document.querySelectorAll('.check-age');
-        if(checkAge.length){
-            checkAge[0].addEventListener('click',function(){
-                var dateBirthday = document.querySelectorAll("#date-birth-day")[0].value;
-                var dateBirthMonth = document.querySelectorAll("#date-birth-month")[0].value;
-                var dateBirthYear = document.querySelectorAll("#date-birth-year")[0].value;
-                var age = 18;
-                var mydate = new Date();
-                mydate.setFullYear(dateBirthYear, dateBirthMonth-1, dateBirthday);
-
-                var currdate = new Date();
-                var setDate = new Date();
-                setDate.setFullYear(mydate.getFullYear() + age, dateBirthMonth-1, dateBirthday);
-
-                var menuAge = document.querySelectorAll('#menu-age');
-                var menuAgeFail = document.querySelectorAll('#menu-age-fail');
-                var menuAgeOkay = document.querySelectorAll('#menu-age-okay');
-
-                console.log(currdate);
-                console.log(setDate);
-                console.log(dateBirthMonth);
-                if ((currdate - setDate) > 0){
-                    console.log("above 18");
-                    menuAge[0].classList.remove('menu-active')
-                    menuAgeOkay[0].classList.add('menu-active');
-                }else{
-                    menuAge[0].classList.remove('menu-active')
-                    menuAgeFail[0].classList.add('menu-active');
-                }
-                return true;
-            });
-        }
 
         //Calling Functions Required After External Menus are Loaded
         var dataMenuLoad = document.querySelectorAll('[data-menu-load]')
