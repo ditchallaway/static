@@ -1,4 +1,4 @@
-# Source for a local(Sandpoint, Idaho) beauty website
+# Source for a local website
 
 
 ## ToDo
@@ -16,6 +16,7 @@ function onBackKeyDown() {
             //Only one element in history and this element is default screen: exit app on back button:
             navigator.app.exitApp();
             return;
+
         }
     }
     //History has at least one previous element: just go back to it:
