@@ -1,6 +1,6 @@
 // To clear cache on devices, always increase APP_VER number after making changes.
 // The app will serve fresh content right away or after 2-3 refreshes (open / close)
-var APP_NAME = 'AppKit';
+var APP_NAME = 'Wax&SkinCare';
 var APP_VER = '2.5';
 var CACHE_NAME = APP_NAME + '-' + APP_VER;
 
@@ -17,10 +17,11 @@ var REQUIRED_FILES = [
 	'scripts/custom.js',
 	'scripts/bootstrap.min.js',
 	// Plugins
-	'plugins/charts/charts.js',
-	'plugins/charts/charts-call-graphs.js',
-	'plugins/countdown/countdown.js',
-	'plugins/filterizr/filterizr.js',
+	'plugins/fetch/eyes.js',
+	'plugins/fetch/face.js',
+	'plugins/fetch/fetch.js',
+	'plugins/fetch/reviews.js',
+	'plugins/fetch/wax.js',
 	'plugins/filterizr/filterizr.css',
 	'plugins/filterizr/filterizr-call.js',
 	'plugins/galleryViews/gallery-views.js',
