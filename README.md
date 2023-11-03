@@ -2,7 +2,9 @@
 
 
 ## ToDo
-Add some code👇🏼for the native Android "back" button.
+🚩Setup webhook listener for changes from square.
+
+🚩Add some code👇🏼for the native Android "back" button.
 ```JavaScript
 document.addEventListener("backbutton", onBackKeyDown, false);
 function onBackKeyDown() {
