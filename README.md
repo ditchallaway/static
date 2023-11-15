@@ -2,28 +2,25 @@
 
 
 ## ToDo
-🚩Setup webhook listener for changes from square.
+# 🚩Create a Notification URL
 
-Create a Notification URL
 The notification URL receives event notifications from Square. These notifications come as JSON data from a POST request. The notification URL must confirm the successful receipt of the data. Applications need at least one reachable notification URL to receive and process webhook events from Square. The notification URL is specified on the Webhooks page of your application in the Developer Dashboard
-Use the Developer Dashboard to create and manage your applications, and sandbox test accounts.
-Dashboard
-.
 
-The notification URL must do the following:
+* 🔹 The notification URL must do the following:
 
--- Receive a POST event notification.
--- Respond with a 2xx HTTP status within 10 seconds.
--- Require that connections use HTTPS.
--- Store the event notification data safely.
--- Use the generated idempotency value that's included as the event_id field in the body of each event notification. Design your application to use this value to bypass processing if it's a repeated value.
-Use message versioning. If your application passes Square event data to another application, you should add versioning to the data to avoid duplication and to make auditing of the data transfer easier.
+* 🔹 Receive a POST event notification.
 
-You can use a server endpoint as a notification URL or you can create a serverless endpoint on services such as Amazon Web Services (AWS) or Google Cloud Platform. You can test a notification URL with sites such as webhook.site.
+* 🔹 Respond with a 2xx HTTP status within 10 seconds.
 
-You add the notification URL to the webhooks information for your application in Subscribe to Event Notifications.
+* 🔹 Require that connections use HTTPS.
 
+* 🔹 Store the event notification data safely.
 
+* 🔹 Use the generated idempotency value that's included as the event_id field in the body of each event notification. Design your application to use this value to bypass processing if it's a repeated value.
+
+* 🔹 Use message versioning. If your application passes Square event data to another application, you should add versioning to the data to avoid duplication and to make auditing of the data transfer easier.
+
+You can use a server endpoint as a notification URL or you can create a serverless endpoint on services such as Amazon Web Services (AWS) or Google Cloud Platform. You can test a notification URL with sites such as webhook.site.You add the notification URL to the webhooks information for your application in Subscribe to Event Notifications.
 
 
 🚩Add some code👇🏼for the native Android "back" button.
